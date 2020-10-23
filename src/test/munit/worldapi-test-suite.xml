@@ -32,7 +32,7 @@
 			<flow-ref doc:name="Flow-ref to worldapiFlow" doc:id="b88a6a84-7e4a-4cc4-a236-cef7ee31728e" name="worldapiFlow"/>
 		</munit:execution>
 		<munit:validation >
-			<munit-tools:assert-that doc:name="Assert that" doc:id="3d86c9ee-1480-426e-95d1-2de3e69117f5" is="#[MunitTools::withMediaType('application/xml')]" expression="#[payload]"/>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="3d86c9ee-1480-426e-95d1-2de3e69117f5" is="#[MunitTools::withMediaType('application/json')]" expression="#[payload]"/>
 		</munit:validation>
 	</munit:test>
 	<munit:test name="worldapi-test-suite-worldapiFlowTest2" doc:id="03db7aa2-2aad-4acc-b89e-25f8cfa81d20" description="Test">
