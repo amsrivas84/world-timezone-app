@@ -19,9 +19,9 @@
 	</munit:test>
 	<flow name="worldapi-test-suiteFlow" doc:id="ec8df1bb-f4c7-4611-bcaf-072e0a887270" >
 		<munit:set-event doc:name="Set Event" doc:id="fda85b41-2f62-4ff9-846f-ab62549f150d">
-				<munit:attributes value="#[{uriParams:{area: 'Asia',location:'Kolkata'}}]" />
+			<munit:attributes value="#[{uriParams:{area: 'Asia',location:'Kolkata'}}]" />
 			<munit:variables >
-				<munit:variable key="area" value="Europe" />
+				<munit:variable key="area" value="Africa" />
 				<munit:variable key="location" value="Abidjan" />
 			</munit:variables>
 			</munit:set-event>
