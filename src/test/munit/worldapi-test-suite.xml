@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="worldapi-test-suite.xml" />
+	<munit:test name="worldapi-test-suite-worldapiFlowTest" doc:id="91290d90-467c-45b4-91c5-c4fa16ddf7b1" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="68c8e61b-42bf-4ef0-99bf-d5cdd875ed93" name="worldapi-test-suiteFlow"/>
+			<flow-ref doc:name="Flow-ref to worldapiFlow" doc:id="725cfdf1-a219-4078-9b61-d1cce754904a" name="worldapiFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="152cbbb0-153e-4f9a-9b9b-225fe59488a7" expression="#[payload]" is="#[MunitTools::notNullValue()]" message="payload is not null"/>
+		</munit:validation>
+	</munit:test>
+	<flow name="worldapi-test-suiteFlow" doc:id="ec8df1bb-f4c7-4611-bcaf-072e0a887270" >
+		<munit:set-event doc:name="Set Event" doc:id="fda85b41-2f62-4ff9-846f-ab62549f150d">
+				<munit:attributes value="#[{uriParams:{area: 'Asia',location:'Kolkata'}}]" />
+			<munit:variables >
+				<munit:variable key="area" value="Europe" />
+				<munit:variable key="location" value="Abidjan" />
+			</munit:variables>
+			</munit:set-event>
+	</flow>
+	<munit:test name="worldapi-test-suite-worldapiFlowTest1" doc:id="d363aa83-b833-4e31-9fe7-24fa71ad0224" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="27b82779-eeea-46a7-a2fa-2b16add3a02f" name="worldapi-test-suiteFlow"/>
+			<flow-ref doc:name="Flow-ref to worldapiFlow" doc:id="b88a6a84-7e4a-4cc4-a236-cef7ee31728e" name="worldapiFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="3d86c9ee-1480-426e-95d1-2de3e69117f5" is="#[MunitTools::withMediaType('application/xml')]" expression="#[payload]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="worldapi-test-suite-worldapiFlowTest2" doc:id="03db7aa2-2aad-4acc-b89e-25f8cfa81d20" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="2bad8482-651a-4843-bf54-2b3d0cf4b6ad" name="worldapi-test-suiteFlow"/>
+			<flow-ref doc:name="Flow-ref to worldapiFlow" doc:id="03d36eab-14db-48e0-a578-b90b93aeaf29" name="worldapiFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="5cc7c0a0-da81-430c-bc72-3f366be0b269" is="#[MunitTools::equalTo(false)]" message="Dst value is incorrect" expression="#[payload.dst]"/>
+		</munit:validation>
+	</munit:test>
+
+</mule>
